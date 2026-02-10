@@ -150,39 +150,40 @@ local config = {
   -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
   -- for the ull list of options
   cmd = {
-    home .. '/.jenv/versions/temurin64-21.0.4/bin/java',
-    '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-    '-Dosgi.bundles.defaultStartLevel=4',
-    '-Declipse.product=org.eclipse.jdt.ls.core.product',
-    '-Dlog.protocol=true',
-    '-Dlog.level=ALL',
-    '-Xmx4g',
-    '--add-modules=ALL-SYSTEM',
-    '--add-opens',
-    'java.base/java.util=ALL-UNNAMED',
-    '--add-opens',
-    'java.base/java.lang=ALL-UNNAMED',
-    -- If you use lombok, download the lombok jar and place it in ~/.local/share/eclipse
-    '-javaagent:'
-      .. home
-      .. '/.local/share/eclipse/lombok.jar',
+    vim.fn.expand '~/.local/share/nvim/mason/bin/jdtls', -- .. '--java-executable' .. vim.fn.expand '~/.sdkman/candidates/java/21/bin/java',
+    -- home .. '/.sdkman/candidates/java/21/bin/java',
+    -- '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+    -- '-Dosgi.bundles.defaultStartLevel=4',
+    -- '-Declipse.product=org.eclipse.jdt.ls.core.product',
+    -- '-Dlog.protocol=true',
+    -- '-Dlog.level=ALL',
+    -- '-Xmx4g',
+    -- '--add-modules=ALL-SYSTEM',
+    -- '--add-opens',
+    -- 'java.base/java.util=ALL-UNNAMED',
+    -- '--add-opens',
+    -- 'java.base/java.lang=ALL-UNNAMED',
+    -- -- If you use lombok, download the lombok jar and place it in ~/.local/share/eclipse
+    -- '-javaagent:'
+    --   .. home
+    --   .. '/.local/share/eclipse/lombok.jar',
 
-    -- The jar file is located where jdtls was installed. This will need to be updated
-    -- to the location where you installed jdtls
-    '-jar',
-    vim.fn.glob '/opt/homebrew/Cellar/jdtls/1.40.0/libexec/plugins/org.eclipse.equinox.launcher_*.jar',
+    -- -- The jar file is located where jdtls was installed. This will need to be updated
+    -- -- to the location where you installed jdtls
+    -- '-jar',
+    -- vim.fn.glob '/opt/homebrew/Cellar/jdtls/1.51.0/libexec/plugins/org.eclipse.equinox.launcher_*.jar',
 
-    -- The configuration for jdtls is also placed where jdtls was installed. This will
-    -- need to be updated depending on your environment
-    '-configuration',
-    '/opt/homebrew/Cellar/jdtls/1.40.0/libexec/config_mac',
+    -- -- The configuration for jdtls is also placed where jdtls was installed. This will
+    -- -- need to be updated depending on your environment
+    -- '-configuration',
+    -- '/opt/homebrew/Cellar/jdtls/1.40.0/libexec/config_mac',
 
-    -- Use the workspace_folder defined above to store data for this project
-    '-data',
-    workspace_folder,
+    -- -- Use the workspace_folder defined above to store data for this project
+    -- '-data',
+    -- workspace_folder,
   },
 }
 
 -- Finally, start jdtls. This will run the language server using the configuration we specified,
 -- setup the keymappings, and attach the LSP client to the current buffer
-jdtls.start_or_attach(config)
+--jdtls.start_or_attach(config)
